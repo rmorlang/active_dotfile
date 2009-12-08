@@ -45,7 +45,7 @@ module ActiveDotfile
         subject.stub! :project_root_file => 2,
                       :home_directory_file => 3,
                       :environment_file => 1
-        subject.configuration_files.should == [1,2,3]
+        subject.configuration_files.should == [3,2,1]
       end
     end
 

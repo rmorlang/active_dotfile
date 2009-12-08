@@ -20,7 +20,7 @@ module ActiveDotfile
     end
 
     def configuration_files
-      [ environment_file, project_root_file, home_directory_file ].compact
+      [ home_directory_file, project_root_file, environment_file ].compact
     end
 
     # :nodoc:
