@@ -1,6 +1,30 @@
-= active_dotfile
+= ActiveDotfile
 
-Description goes here.
+This little library attempts to generalize some configuration patterns based
+on some code I originally poached from RSpec. The general idea is:
+
+ 1. define a configuration class
+ 1. include ActiveDotfile
+ 1. create one or more dotfiles to configure the class with
+ 1. instantiate the class and use it
+
+== Rough Usage Example ==
+
+==== my_class.rb ====
+  require 'active_dotfile'
+
+  class MyClass
+    include ActiveDotfile::Configurable
+    load_dotfiles_on_initialize
+
+    attr_accessor :param1, param2
+  end
+
+==== ~/.my_class ====
+  self.param1 = "foo"
+  configure do |config|
+    config.param2 = "bar"
+  end
 
 == Note on Patches/Pull Requests
  

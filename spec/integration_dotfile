@@ -1,0 +1,6 @@
+self.param1 = "foo"
+configure do |config|
+  config.param2 = "bar"
+end
+
+
