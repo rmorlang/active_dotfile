@@ -26,6 +26,7 @@ module ActiveDotfile
     describe "an instance using the module" do 
       before do
         TestClass.dotfile_name nil
+        File.stub! :read => ""
       end
       subject { TestClass.new }
       describe "#load_configuration" do
@@ -46,8 +47,8 @@ module ActiveDotfile
 
         it "should load each found configuration file and return true" do
           @filename_helper_mock.stub!(:configuration_files).and_return(["a", "b"])
-          subject.should_receive(:load).with("a")
-          subject.should_receive(:load).with("b")
+          File.should_receive(:read).with("a")
+          File.should_receive(:read).with("b")
           subject.load_configuration.should be_true
         end
 

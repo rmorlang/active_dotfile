@@ -11,7 +11,7 @@ module ActiveDotfile
           return false
         else
           files.each do |file|
-            load file
+            eval File.read(file)
           end
           return true
         end
