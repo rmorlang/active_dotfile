@@ -3,14 +3,14 @@
 This little library attempts to generalize some configuration patterns based
 on some code I originally poached from RSpec. The general idea is:
 
- 1. define a configuration class
- 1. include ActiveDotfile
- 1. create one or more dotfiles to configure the class with
- 1. instantiate the class and use it
+1. define a configuration class
+1. include ActiveDotfile
+1. create one or more dotfiles to configure the class with
+1. instantiate the class and use it
 
 == Rough Usage Example ==
 
-==== my_class.rb ====
+==== my_class.rb 
   require 'active_dotfile'
 
   class MyClass
@@ -20,18 +20,19 @@ on some code I originally poached from RSpec. The general idea is:
     attr_accessor :param1, param2
   end
 
-==== ~/.my_class ====
+==== ~/.my_class
   self.param1 = "foo"
   configure do |config|
     config.param2 = "bar"
   end
 
-== Dotfile Naming ==
+== Dotfile Naming 
 
 ActiveDotfile tries to be smart about figuring out a default base filename for
 your dotfiles based on your configuration class' name. Some examples:
 
   Class Name                    Dotfile Name
+  -----------------------------------------------
   Vehicle::Car                  .vehicle_car
   Vehicle::Car::Configuration   .vehicle_car
   Vehicle::CarConfiguration     .vehicle_car
@@ -49,7 +50,7 @@ can always specify the basename that should be used:
 
 The above class would configure itself from dotfiles named ".fluffy_bunny"
 
-== Specifying a Dotfile with your Environment ==
+== Specifying a Dotfile with your Environment 
 
 ActiveDotfile will also try to use a configuration file specified in your
 current environment, if any. In the above case, if your execution environment
@@ -58,20 +59,21 @@ from the "/tmp/rabbit_configuration" file:
 
   FLUFFY_BUNNY_CONFIG_FILE=/tmp/rabbit_configuration
 
-== Dotfile Search Paths ==
+== Dotfile Search Paths 
 
 By default, ActiveDotfile will check both your home directory and the root
 directory of your current project for a matching dotfile. See ProjectScout
 at http://github.com/rleemorlang/project_scout for more information about
 how the project's root directory is determined.
 
-== Dotfile Precedence ==
+== Dotfile Precedence 
 
 ActiveDotfile will evaluate every discovered/specified dotfile it finds
 in the following order:
- 1. home directory dotfile
- 1. project directory dotfil
- 1. environment-specified dotfile
+
+1. home directory dotfile
+1. project directory dotfil
+1. environment-specified dotfile
 
 You can take advantage of this ordering by having global configurations, 
 project-specific configurations, and environment-specific configurations.
