@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "active_dotfile"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{use dotfiles to configure your Ruby projects}
+    gem.description = %Q{ActiveDotfile handles configuring your Ruby projects' configuration classes by automatically locating and loading class-specific dotfiles.}
     gem.email = "rick@lee-morlang.com"
     gem.homepage = "http://github.com/rleemorlang/active_dotfile"
     gem.authors = ["Rick Lee-Morlang"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_dependency "project_scout"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
