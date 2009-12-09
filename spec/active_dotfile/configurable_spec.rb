@@ -2,6 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 class TestClass
   include ActiveDotfile::Configurable
+  attr_accessor_with_default :no_default_value, :default_value => "default"
 end
 
 class TestClassWithInitializer
@@ -54,6 +55,30 @@ module ActiveDotfile
 
         it "should return false if no configuration files" do
           subject.load_configuration.should be_false
+        end
+      end
+
+      describe "#attr_accessor_with_default" do
+        describe "attributes with a default" do
+          it "should return the default value when none other specified" do
+            subject.default_value.should == "default"
+          end
+
+          it "should return the set value when one is specified" do
+            subject.default_value = "something else"
+            subject.default_value.should == "something else"
+          end
+        end
+
+        describe "attributes without a default" do
+          it "should return nil when no other value specified" do
+            subject.no_default_value.should be_nil
+          end
+
+          it "should return the set value when one is specified" do
+            subject.no_default_value = "something"
+            subject.no_default_value.should == "something"
+          end
         end
       end
 
